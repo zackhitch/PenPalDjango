@@ -1,0 +1,11 @@
+{
+  "name": "PenPalDjango",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/zackhitch/PenPalDjango.git",
+  "author": "Kaitlyn Schorr <kaitlynschorr@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "create-react-app": "^1.5.2"
+  }
+}
