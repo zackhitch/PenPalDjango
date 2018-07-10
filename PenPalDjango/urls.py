@@ -19,7 +19,6 @@ from django.urls import path, include, re_path, url
 from rest_framework import routers
 from penpals.api import PenPalViewSet, AddressViewSet, LetterViewSet
 from rest_framework.authtoken import views
-from reat_auth import
 
 
 router = routers.DefaultRouter()
