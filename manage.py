@@ -3,7 +3,11 @@ import os
 import sys
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djorg.settings")
+=======
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "PenPalDjango.settings")
+>>>>>>> a3bfc7dec52e6c975cc499a01cb316bbec0702e2
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
