@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
 import {
   Col,
@@ -8,32 +8,31 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText
-} from "reactstrap";
+  FormText,
+} from 'reactstrap';
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: ""
+      username: '',
+      password: '',
     };
   }
-  
 
   signupHandler = event => {
     event.preventDefault();
     axios
       .post(
-        "https://penpaldjango.herokuapp.com/rest-auth/registration/",
+        'https://penpaldjango.herokuapp.com/rest-auth/registration/',
         this.state
       )
       .then(response => {
-        console.log("New account created! Login to continue.");
-        this.props.history.push("/login");
+        console.log('New account created! Login to continue.');
+        this.props.history.push('/login');
       })
       .catch(error => {
-        alert("There was an error creating a new account");
+        alert('There was an error creating a new account');
       });
   };
 
