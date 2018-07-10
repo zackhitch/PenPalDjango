@@ -34,12 +34,15 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [
                        s.strip() for s in v.split(',')])
 
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
     'penpals',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +52,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = ['whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -138,6 +143,12 @@ REST_FRAMEWORK = {'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
 ]
 }
+
+CORS_ORIGIN_WHITELIST = (
+    'https://penpaldjango.herokuapp.com',
+    'localhost:3000',
+    '127.0.0.1:3000'
+)
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
