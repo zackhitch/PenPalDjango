@@ -19,6 +19,7 @@ class SignUp extends Component {
       password: ""
     };
   }
+  
 
   signupHandler = event => {
     event.preventDefault();
