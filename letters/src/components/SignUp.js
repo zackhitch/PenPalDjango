@@ -23,10 +23,10 @@ class SignUp extends Component {
   signupHandler = event => {
     event.preventDefault();
     axios
-      .post(
-        'https://penpaldjango.herokuapp.com/rest-auth/registration/',
-        this.state
-      )
+      .post('https://penpaldjango.herokuapp.com/rest-auth/registration/', {
+        username: this.state.username,
+        password: this.state.password,
+      })
       .then(response => {
         console.log('New account created! Login to continue.');
         this.props.history.push('/login');
