@@ -18,7 +18,7 @@ class Login extends Component {
       password: ""
     };
   }
-
+ 
   loginHandler = event => {
     event.preventDefault();
     axios
@@ -27,10 +27,10 @@ class Login extends Component {
         password: this.state.password
       })
       .then(response => {
-        this.props.setUser({
-          username: this.state.username,
-          userId: response.data.id
-        });
+        // this.props.setUser({
+        //   username: this.state.username,
+        //   userId: response.data.id
+        // });
         localStorage.setItem("authToken", response.data.token);
         console.log("SUCCESS!"); //TODO:Put a route here
       })
@@ -38,11 +38,16 @@ class Login extends Component {
         console.log("error:", error);
       });
   };
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
   render() {
     return (
       <div className="logInForm">
         <Label>Log In!</Label>
-        <Form onSubmit={this.loginHandler}>
+        <Form onSubmit={this.loginHandler} onChange={this.handleChange}>
           <FormGroup row>
             <Label for="logInUsername" sm={2}>
               Username

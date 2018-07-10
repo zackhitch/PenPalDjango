@@ -20,6 +20,7 @@ from rest_framework import routers
 from penpals.api import PenPalViewSet, AddressViewSet, LetterViewSet
 from rest_framework.authtoken import views
 
+
 router = routers.DefaultRouter()
 router.register(r'penpals', PenPalViewSet)
 router.register(r'addresses', AddressViewSet)
@@ -28,5 +29,6 @@ router.register(r'letters', LetterViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'api/', include(router.urls)),
-    re_path(r'^api-token-auth/', views.obtain_auth_token)
+    re_path(r'^api-token-auth/', views.obtain_auth_token),
+    url(r'^rest-auth/', include('rest_auth.urls'))
 ]

@@ -20,6 +20,19 @@ class SignUp extends Component {
     };
   }
 
+  signupHandler = event => {
+    event.preventDefault();
+    axios
+      .post("http://localhost:5000/api/users", this.state)
+      .then(response => {
+        console.log("New account created! Login to continue.");
+        this.props.history.push("/login");
+      })
+      .catch(error => {
+        alert("There was an error creating a new account");
+      });
+  };
+
   render() {
     return (
       <div className="signUpForm">

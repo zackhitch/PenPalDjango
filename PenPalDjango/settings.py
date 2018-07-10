@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'penpals',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_auth',
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
