@@ -23,7 +23,10 @@ class SignUp extends Component {
   signupHandler = event => {
     event.preventDefault();
     axios
-      .post("http://localhost:5000/api/users", this.state)
+      .post(
+        "https://penpaldjango.herokuapp.com/rest-auth/registration/",
+        this.state
+      )
       .then(response => {
         console.log("New account created! Login to continue.");
         this.props.history.push("/login");
@@ -33,11 +36,15 @@ class SignUp extends Component {
       });
   };
 
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
   render() {
     return (
       <div className="signUpForm">
         <Label>Sign Up!</Label>
-        <Form>
+        <Form onSubmit={this.signupHandler} onChange={this.handleChange}>
           <FormGroup row>
             <Label for="signUpUsername" sm={2}>
               Username
