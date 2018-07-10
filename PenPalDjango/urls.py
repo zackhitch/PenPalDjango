@@ -15,10 +15,11 @@ Including another URLconf
     curl -X POST -H "Content-Type: application/json" -d '{"username":"admin", "password":"adminadmin"}'  http://127.0.0.1:8000/api-token-auth/
 """
 from django.contrib import admin
-from django.urls import path, include, re_path
+from django.urls import path, include, re_path, url
 from rest_framework import routers
 from penpals.api import PenPalViewSet, AddressViewSet, LetterViewSet
 from rest_framework.authtoken import views
+from reat_auth import
 
 
 router = routers.DefaultRouter()
@@ -30,7 +31,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'api/', include(router.urls)),
     re_path(r'^api-token-auth/', views.obtain_auth_token),
-    path(r'^rest-auth/', include('rest_auth.urls')),
-    path(r'^rest-auth/', include('rest_auth.urls')),
-    path(r'^rest-auth/registration/', include('rest_auth.registration.urls'))
+    url(r'^rest-auth/', include('rest_auth.urls')),
+    url(r'^rest-auth/registration/', include('rest_auth.registration.urls'))
 ]
