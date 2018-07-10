@@ -15,7 +15,8 @@ Including another URLconf
     curl -X POST -H "Content-Type: application/json" -d '{"username":"admin", "password":"adminadmin"}'  http://127.0.0.1:8000/api-token-auth/
 """
 from django.contrib import admin
-from django.urls import path, include, re_path, url
+from django.urls import path, include, re_path
+from django.conf.urls import url
 from rest_framework import routers
 from penpals.api import PenPalViewSet, AddressViewSet, LetterViewSet
 from rest_framework.authtoken import views
