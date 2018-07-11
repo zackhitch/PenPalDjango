@@ -59,7 +59,7 @@ class LetterViewSet(viewsets.ModelViewSet):
             return Letter.objects.filter(user=user)
 
 
-class AddressSerializer(serializers.ModelSerializer):
+class AddressSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Address
         fields = ('street_address', 'city', 'state',
