@@ -24,13 +24,13 @@ class LetterViewSet(viewsets.ModelViewSet):
     serializer_class = LetterSerializer
     queryset = Letter.objects.all()
 
-    def get_queryset(self):
-        user = self.request.user
+    # def get_queryset(self):
+    #     user = self.request.user
 
-        if user.is_anonymous:
-            return Letter.objects.none()
-        else:
-            return Letter.objects.filter(user=user)
+    #     if user.is_anonymous:
+    #         return Letter.objects.none()
+    #     else:
+    #         return Letter.objects.filter(user=user)
 
 
 class AddressSerializer(serializers.ModelSerializer):
