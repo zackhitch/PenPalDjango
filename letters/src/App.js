@@ -20,6 +20,7 @@ class App extends Component {
     this.setState({ user: this.setState.user });
   }
   setUser(user) {
+    console.log("Setting user to: ", user);
     this.setState({ user: user });
   }
   render() {
@@ -29,7 +30,11 @@ class App extends Component {
           <NavBar user={this.state.user} />
           <Container>
             <Route exact path="/" render={() => <SignUp />} />
-            <Route exact path="/login" render={() => <Login />} />
+            <Route
+              exact
+              path="/login"
+              render={() => <Login setUser={this.setUser} />}
+            />
             <Route exact path="/penpals" render={() => <PenPalList />} />
           </Container>
         </div>

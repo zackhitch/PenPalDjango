@@ -29,12 +29,11 @@ class Login extends Component {
         password: this.state.password
       })
       .then(response => {
-        // this.props.setUser({
-        //   username: this.state.username,
-        //   userId: response.data.id
-        // });
+        this.props.setUser({
+          username: this.state.username
+        });
         localStorage.setItem("authToken", response.data.token);
-        console.log("SUCCESS!"); //TODO:Put a route here
+        console.log(response); //TODO:Put a route here
         this.props.history.push("/penpals");
       })
       .catch(error => {
