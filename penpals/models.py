@@ -12,8 +12,7 @@ class Address(models.Model):
     notes = models.TextField(blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def __unicode__(self):
-        return ({self.street_address, self.city})
+    
 
 
 class PenPal(models.Model):
