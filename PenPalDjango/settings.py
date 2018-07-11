@@ -162,12 +162,12 @@ REST_FRAMEWORK = {'DEFAULT_AUTHENTICATION_CLASSES': (
 }
 
 CORS_ORIGIN_WHITELIST = (
-    'https://penpaldjango.herokuapp.com',
-    
+    'https://penpaldjango.herokuapp.com',    
     'https://ancient-springs-53662.herokuapp.com',
     'localhost:3000',
     '127.0.0.1:3000'
 )
+CORS_ORIGIN_ALLOW_ALL = True
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
