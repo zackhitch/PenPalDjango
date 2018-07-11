@@ -24,7 +24,7 @@ class Login extends Component {
   loginHandler = event => {
     event.preventDefault();
     axios
-      .post("https://penpaldjango.herokuapp.com/api-token-auth/", {
+      .post("https://penpaldjango.herokuapp.com/rest-auth/login/", {
         username: this.state.username,
         password: this.state.password
       })
