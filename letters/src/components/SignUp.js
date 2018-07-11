@@ -16,7 +16,8 @@ class SignUp extends Component {
     super(props);
     this.state = {
       username: '',
-      password: '',
+      password1: '',
+      password2:''
     };
   }
 
@@ -25,7 +26,8 @@ class SignUp extends Component {
     axios
       .post('https://penpaldjango.herokuapp.com/rest-auth/registration/', {
         username: this.state.username,
-        password: this.state.password,
+        password1: this.state.password1,
+        password2: this.state.password2
       })
       .then(response => {
         console.log('New account created! Login to continue.');
@@ -65,7 +67,7 @@ class SignUp extends Component {
             <Col sm={10}>
               <Input
                 type="password"
-                name="password"
+                name="password1"
                 id="signUpPassword"
                 placeholder="Please enter a password here"
               />
@@ -78,7 +80,7 @@ class SignUp extends Component {
             <Col sm={10}>
               <Input
                 type="password"
-                name="password"
+                name="password2"
                 id="signUpPasswordConfirm"
                 placeholder="Please confirm your password here"
               />
