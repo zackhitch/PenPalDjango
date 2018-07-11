@@ -11,13 +11,16 @@ class Address(models.Model):
     zipcode = models.CharField(max_length=5)
     notes = models.TextField(blank=True)
 
+    def __str__(self):
+        return "%s\n%s, %s, %s\n%s" self.street_address, self.city, self.state, self.zipcode, self.notes
+
     
 
 
 class PenPal(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     name = models.CharField(max_length=200)
-    address = models.ForeignKey(Address, on_delete=models.CASCADE)
+    address = models.OneToOneField(Address, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
