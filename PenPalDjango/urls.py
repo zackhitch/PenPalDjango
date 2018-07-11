@@ -32,5 +32,6 @@ urlpatterns = [
     path(r'api/', include(router.urls)),
     re_path(r'^api-token-auth/', views.obtain_auth_token),
     url(r'^rest-auth/', include('rest_auth.urls')),
-    url(r'^rest-auth/registration/', include('rest_auth.registration.urls'))
+    url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
+    url(r'^', include('django.contrib.auth.urls')),
 ]
