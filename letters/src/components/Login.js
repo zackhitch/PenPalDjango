@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router";
+
 import axios from "axios";
 import {
   Col,
@@ -18,21 +20,21 @@ class Login extends Component {
       password: ""
     };
   }
- 
+
   loginHandler = event => {
     event.preventDefault();
     axios
-      .post("https://penpaldjango.herokuapp.com/api-token-auth/", {
+      .post("https://penpaldjango.herokuapp.com/rest-auth/login/", {
         username: this.state.username,
         password: this.state.password
       })
       .then(response => {
-        // this.props.setUser({
-        //   username: this.state.username,
-        //   userId: response.data.id
-        // });
-        localStorage.setItem("authToken", response.data.token);
-        console.log("SUCCESS!"); //TODO:Put a route here
+        this.props.setUser({
+          username: this.state.username
+        });
+        localStorage.setItem("authToken", response.data.key);
+        console.log(response); //TODO:Put a route here
+        this.props.history.push("/penpals");
       })
       .catch(error => {
         console.log("error:", error);
@@ -81,4 +83,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

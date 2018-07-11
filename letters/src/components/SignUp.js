@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
+import { withRouter } from "react-router";
 
 import {
   Col,
@@ -8,31 +9,33 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText,
-} from 'reactstrap';
+  FormText
+} from "reactstrap";
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: '',
+      username: "",
+      password1: "",
+      password2: ""
     };
   }
 
   signupHandler = event => {
     event.preventDefault();
     axios
-      .post('https://penpaldjango.herokuapp.com/rest-auth/registration/', {
+      .post("http://penpaldjango.herokuapp.com/rest-auth/registration/", {
         username: this.state.username,
-        password: this.state.password,
+        password1: this.state.password1,
+        password2: this.state.password2
       })
       .then(response => {
-        console.log('New account created! Login to continue.');
-        this.props.history.push('/login');
+        console.log("New account created! Login to continue.");
+        this.props.history.push("/login");
       })
       .catch(error => {
-        alert('There was an error creating a new account');
+        alert("There was an error creating a new account");
       });
   };
 
@@ -65,7 +68,7 @@ class SignUp extends Component {
             <Col sm={10}>
               <Input
                 type="password"
-                name="password"
+                name="password1"
                 id="signUpPassword"
                 placeholder="Please enter a password here"
               />
@@ -78,7 +81,7 @@ class SignUp extends Component {
             <Col sm={10}>
               <Input
                 type="password"
-                name="password"
+                name="password2"
                 id="signUpPasswordConfirm"
                 placeholder="Please confirm your password here"
               />
@@ -91,4 +94,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);

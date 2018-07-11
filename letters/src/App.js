@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
+import PenPalList from "./components/PenPalList";
 import { Container } from "reactstrap";
 
 class App extends Component {
@@ -20,6 +20,7 @@ class App extends Component {
     this.setState({ user: this.setState.user });
   }
   setUser(user) {
+    console.log("Setting user to: ", user);
     this.setState({ user: user });
   }
   render() {
@@ -29,7 +30,16 @@ class App extends Component {
           <NavBar user={this.state.user} />
           <Container>
             <Route exact path="/" render={() => <SignUp />} />
-            <Route exact path="/login" render={() => <Login />} />
+            <Route
+              exact
+              path="/login"
+              render={() => <Login setUser={this.setUser} />}
+            />
+            <Route
+              exact
+              path="/penpals"
+              render={() => <PenPalList user={this.state.user} />}
+            />
           </Container>
         </div>
       </Fragment>

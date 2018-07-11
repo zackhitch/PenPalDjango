@@ -26,11 +26,13 @@ class NavBar extends Component {
             <NavItem>
               <NavLink href="#">About</NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink tag={Link} to="/login">
-                Log In
-              </NavLink>
-            </NavItem>
+            {this.props.user === undefined && (
+              <NavItem>
+                <NavLink tag={Link} to="/login">
+                  Log In
+                </NavLink>
+              </NavItem>
+            )}
             {this.props.user !== undefined && (
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>

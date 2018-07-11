@@ -23,11 +23,11 @@ class PenPalViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
-
         if user.is_anonymous:
             return PenPal.objects.none()
         else:
             return PenPal.objects.filter(user=user)
+           
 
 
 class LetterSerializer(serializers.HyperlinkedModelSerializer):

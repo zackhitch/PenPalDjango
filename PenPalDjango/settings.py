@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
     'rest_auth.registration',
     'penpals',
     'rest_framework',
@@ -118,6 +119,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#all auth config
+
+ACCOUNT_EMAIL_REQUIRED = False
+
+ACCOUNT_EMAIL_VERIFICATION = "none"
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/

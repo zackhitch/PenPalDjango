@@ -12,6 +12,8 @@ class Address(models.Model):
     notes = models.TextField(blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    
+
 
 class PenPal(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
