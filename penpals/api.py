@@ -6,6 +6,7 @@ class PenPalSerializer(serializers.ModelSerializer):
     class Meta:
         model = PenPal
         fields = ('name', 'address')
+        address = AddressSerializer()
 
     def create(self, validated_data):
         # import pdb
