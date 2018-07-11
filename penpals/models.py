@@ -13,7 +13,7 @@ class Address(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __unicode__(self):
-    return ({self.street_address, self.city})
+    return self.street_address
 
 
 class PenPal(models.Model):
