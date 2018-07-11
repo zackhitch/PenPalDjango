@@ -10,7 +10,6 @@ class Address(models.Model):
     state = models.CharField(max_length=2)
     zipcode = models.CharField(max_length=5)
     notes = models.TextField(blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     
 
@@ -27,7 +26,6 @@ class Letter(models.Model):
     date = models.DateTimeField()
     outbound = models.BooleanField()
     penpal = models.ForeignKey(PenPal, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 # class User(models.Model):
