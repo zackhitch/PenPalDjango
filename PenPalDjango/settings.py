@@ -71,6 +71,12 @@ MIDDLEWARE = ['whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_WHITELIST = (
+    'ancient-springs-53662.herokuapp.com',
+)
+
 ROOT_URLCONF = 'PenPalDjango.urls'
 
 TEMPLATES = [
