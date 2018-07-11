@@ -12,6 +12,9 @@ class Address(models.Model):
     notes = models.TextField(blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def __unicode__(self):
+    return {self.street_address, self.city}
+
 
 class PenPal(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
