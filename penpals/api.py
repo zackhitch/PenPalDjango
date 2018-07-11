@@ -5,33 +5,6 @@ from .models import PenPal, Address, Letter
            
 
 
-class LetterSerializer(serializers.HyperlinkedModelSerializer):
-    penpal = PenPalSerializer()
-    class Meta:
-        model = Letter
-        fields = ('date', 'outbound', 'penpal')
-
-    def create(self, validated_data):
-        # import pdb
-        # pdb.set_trace()
-        user = self.context['request'].user
-        letter = Letter.objects.create(
-            user=user, **validated_data)
-        return letter
-
-
-class LetterViewSet(viewsets.ModelViewSet):
-
-    serializer_class = LetterSerializer
-    queryset = Letter.objects.all()
-
-    # def get_queryset(self):
-    #     user = self.request.user
-
-    #     if user.is_anonymous:
-    #         return Letter.objects.none()
-    #     else:
-    #         return Letter.objects.filter(user=user)
 
 
 class AddressSerializer(serializers.ModelSerializer):
@@ -92,3 +65,32 @@ class PenPalViewSet(viewsets.ModelViewSet):
         else:
             penpal = PenPal.objects.filter(user=user)
             return penpal
+
+
+class LetterSerializer(serializers.HyperlinkedModelSerializer):
+    penpal = PenPalSerializer()
+    class Meta:
+        model = Letter
+        fields = ('date', 'outbound', 'penpal')
+
+    def create(self, validated_data):
+        # import pdb
+        # pdb.set_trace()
+        user = self.context['request'].user
+        letter = Letter.objects.create(
+            user=user, **validated_data)
+        return letter
+
+
+class LetterViewSet(viewsets.ModelViewSet):
+
+    serializer_class = LetterSerializer
+    queryset = Letter.objects.all()
+
+    # def get_queryset(self):
+    #     user = self.request.user
+
+    #     if user.is_anonymous:
+    #         return Letter.objects.none()
+    #     else:
+    #         return Letter.objects.filter(user=user)
