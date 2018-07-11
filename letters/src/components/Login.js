@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router";
+
 import axios from "axios";
 import {
   Col,
@@ -18,7 +20,7 @@ class Login extends Component {
       password: ""
     };
   }
- 
+
   loginHandler = event => {
     event.preventDefault();
     axios
@@ -33,6 +35,7 @@ class Login extends Component {
         // });
         localStorage.setItem("authToken", response.data.token);
         console.log("SUCCESS!"); //TODO:Put a route here
+        this.props.history.push("/penpals");
       })
       .catch(error => {
         console.log("error:", error);
@@ -81,4 +84,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);
