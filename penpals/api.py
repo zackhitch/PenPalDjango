@@ -27,8 +27,8 @@ class PenPalViewSet(viewsets.ModelViewSet):
             return PenPal.objects.none()
         else:
             penpal = PenPal.objects.filter(user=user)
-            penpal[0].address = 
-            return 
+           
+            return penpal
 
 
 class LetterSerializer(serializers.HyperlinkedModelSerializer):
