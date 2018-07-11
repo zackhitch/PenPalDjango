@@ -73,9 +73,7 @@ MIDDLEWARE = ['whitenoise.middleware.WhiteNoiseMiddleware',
 
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ORIGIN_WHITELIST = (
-    'https://ancient-springs-53662.herokuapp.com',
-)
+
 
 ROOT_URLCONF = 'PenPalDjango.urls'
 
@@ -165,6 +163,8 @@ REST_FRAMEWORK = {'DEFAULT_AUTHENTICATION_CLASSES': (
 
 CORS_ORIGIN_WHITELIST = (
     'https://penpaldjango.herokuapp.com',
+    
+    'https://ancient-springs-53662.herokuapp.com',
     'localhost:3000',
     '127.0.0.1:3000'
 )
