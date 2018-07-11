@@ -59,7 +59,7 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
-MIDDLEWARE = ['app.CorsMiddleware','whitenoise.middleware.WhiteNoiseMiddleware',
+MIDDLEWARE = ['PenPalDjango.CorsMiddleware','whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
