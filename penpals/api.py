@@ -26,9 +26,8 @@ class PenPalViewSet(viewsets.ModelViewSet):
         if user.is_anonymous:
             return PenPal.objects.none()
         else:
-            penpal = PenPal.objects.filter(user=user)
+            return PenPal.objects.filter(user=user)
            
-            return penpal
 
 
 class LetterSerializer(serializers.HyperlinkedModelSerializer):
