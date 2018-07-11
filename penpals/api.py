@@ -22,8 +22,7 @@ class PenPalViewSet(viewsets.ModelViewSet):
     queryset = PenPal.objects.all()
 
     def get_queryset(self):
-        user = self.request.user
-
+        user = self.context['request'].user
         if user.is_anonymous:
             return PenPal.objects.none()
         else:
