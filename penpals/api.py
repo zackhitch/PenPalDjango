@@ -63,17 +63,19 @@ class AddressViewSet(viewsets.ModelViewSet):
             return Address.objects.filter(user=user)
 
 class PenPalSerializer(serializers.ModelSerializer):
+    address = AddressSerializer()
     class Meta:
         model = PenPal
         fields = ('name', 'address')
-        address = AddressSerializer()
 
     def create(self, validated_data):
         # import pdb
         # pdb.set_trace()
+        address_data = validated_data.pop('address')
         user = self.context['request'].user
         penpal = PenPal.objects.create(
             user=user, **validated_data)
+        Address.objects.create(penpal=penpal, **address_data)
         return penpal
 
 
