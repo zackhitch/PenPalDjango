@@ -17,7 +17,7 @@ class PenPalList extends Component {
     };
     console.log(config);
     axios
-      .get(`https://penpaldjango.herokuapp.com/api/penpals`, config)
+      .get(`https://penpaldjango.herokuapp.com/api/penpals/`, config)
       .then(response => {
         console.log("Penpals: ", response);
         this.setState({ penpals: response.data });
