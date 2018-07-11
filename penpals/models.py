@@ -12,7 +12,8 @@ class Address(models.Model):
     notes = models.TextField(blank=True)
 
     def __str__(self):
-        return ("%s\n%s, %s, %s\n%s" self.street_address, self.city, self.state, self.zipcode, self.notes)
+        
+        return "%s\n%s, %s, %s\n%s" %(self.street_address, self.city, self.state, self.zipcode, self.notes)
 
     
 
