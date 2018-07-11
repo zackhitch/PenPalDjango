@@ -2,33 +2,6 @@ from rest_framework import serializers, viewsets
 from .models import PenPal, Address, Letter
 
 
-class PenPalSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PenPal
-        fields = ('name', 'address')
-        address = AddressSerializer()
-
-    def create(self, validated_data):
-        # import pdb
-        # pdb.set_trace()
-        user = self.context['request'].user
-        penpal = PenPal.objects.create(
-            user=user, **validated_data)
-        return penpal
-
-
-class PenPalViewSet(viewsets.ModelViewSet):
-
-    serializer_class = PenPalSerializer
-    queryset = PenPal.objects.all()
-
-    def get_queryset(self):
-        user = self.request.user
-        if user.is_anonymous:
-            return PenPal.objects.none()
-        else:
-            penpal = PenPal.objects.filter(user=user)
-            return penpal
            
 
 
@@ -88,3 +61,31 @@ class AddressViewSet(viewsets.ModelViewSet):
 
         else:
             return Address.objects.filter(user=user)
+
+class PenPalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PenPal
+        fields = ('name', 'address')
+        address = AddressSerializer()
+
+    def create(self, validated_data):
+        # import pdb
+        # pdb.set_trace()
+        user = self.context['request'].user
+        penpal = PenPal.objects.create(
+            user=user, **validated_data)
+        return penpal
+
+
+class PenPalViewSet(viewsets.ModelViewSet):
+
+    serializer_class = PenPalSerializer
+    queryset = PenPal.objects.all()
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_anonymous:
+            return PenPal.objects.none()
+        else:
+            penpal = PenPal.objects.filter(user=user)
+            return penpal
