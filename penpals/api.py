@@ -6,6 +6,7 @@ from .models import PenPal, Address, Letter
 
 
 class LetterSerializer(serializers.HyperlinkedModelSerializer):
+    penpal = PenPalSerializer()
     class Meta:
         model = Letter
         fields = ('date', 'outbound', 'penpal')
