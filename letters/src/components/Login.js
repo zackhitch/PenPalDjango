@@ -32,7 +32,7 @@ class Login extends Component {
         this.props.setUser({
           username: this.state.username
         });
-        localStorage.setItem("authToken", response.data.token);
+        localStorage.setItem("authToken", response.data.key);
         console.log(response); //TODO:Put a route here
         this.props.history.push("/penpals");
       })

@@ -13,7 +13,7 @@ class PenPalList extends Component {
   }
   getPenpals() {
     let config = {
-      headers: { Authorization: localStorage.getItem("authToken") }
+      headers: { Authorization: `Token ${localStorage.getItem("authToken")}` }
     };
     console.log(config);
     axios

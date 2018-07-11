@@ -35,7 +35,11 @@ class App extends Component {
               path="/login"
               render={() => <Login setUser={this.setUser} />}
             />
-            <Route exact path="/penpals" render={() => <PenPalList />} />
+            <Route
+              exact
+              path="/penpals"
+              render={() => <PenPalList user={this.state.user} />}
+            />
           </Container>
         </div>
       </Fragment>
