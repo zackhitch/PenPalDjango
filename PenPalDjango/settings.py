@@ -59,7 +59,7 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
-MIDDLEWARE = ['whitenoise.middleware.WhiteNoiseMiddleware',
+MIDDLEWARE = ['app.CorsMiddleware','whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -71,7 +71,7 @@ MIDDLEWARE = ['whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_CREDENTIALS = True
 
 
 
