@@ -27,7 +27,6 @@ class PenPalViewSet(viewsets.ModelViewSet):
             return PenPal.objects.none()
         else:
             penpal = PenPal.objects.filter(user=user)
-            penpal.address = Address.objects.get(pk=penpal.address)
             return penpal
            
 
