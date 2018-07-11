@@ -24,6 +24,9 @@ class PenPal(models.Model):
     address = models.OneToOneField(Address, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 
 class Letter(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
