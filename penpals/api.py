@@ -2,7 +2,7 @@ from rest_framework import serializers, viewsets
 from .models import PenPal, Address, Letter
 
 
-class PenPalSerializer(serializers.HyperlinkedModelSerializer):
+class PenPalSerializer(serializers.ModelSerializer):
     class Meta:
         model = PenPal
         fields = ('name', 'address')
@@ -26,7 +26,9 @@ class PenPalViewSet(viewsets.ModelViewSet):
         if user.is_anonymous:
             return PenPal.objects.none()
         else:
-            return PenPal.objects.filter(user=user)
+            penpal = PenPal.objects.filter(user=user)
+            penpal.address = Address.objects.get(pk=penpal.address)
+            return penpal
            
 
 
