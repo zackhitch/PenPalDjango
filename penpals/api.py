@@ -26,7 +26,9 @@ class PenPalViewSet(viewsets.ModelViewSet):
         if user.is_anonymous:
             return PenPal.objects.none()
         else:
-            return PenPal.objects.filter(user=user)
+            penpal = PenPal.objects.filter(user=user)
+            penpal[0].address = 
+            return 
 
 
 class LetterSerializer(serializers.HyperlinkedModelSerializer):
@@ -57,7 +59,7 @@ class LetterViewSet(viewsets.ModelViewSet):
             return Letter.objects.filter(user=user)
 
 
-class AddressSerializer(serializers.HyperlinkedModelSerializer):
+class AddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Address
         fields = ('street_address', 'city', 'state',
