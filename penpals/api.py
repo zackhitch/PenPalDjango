@@ -49,7 +49,7 @@ class PenPalSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         penpal = PenPal.objects.create(
             user=user, **validated_data)
-        Address.objects.create(penpal=penpal, **address_data)
+        Address.objects.create(user=user, penpal=penpal, **address_data)
         return penpal
 
 
@@ -76,9 +76,10 @@ class LetterSerializer(serializers.HyperlinkedModelSerializer):
     def create(self, validated_data):
         # import pdb
         # pdb.set_trace()
-        penpal = self.context['request'].penpal
+        user = self.context['request'].user
         letter = Letter.objects.create(
-            penpal=penpal, **validated_data)
+            user=user, **validated_data)
+
         return letter
 
 
