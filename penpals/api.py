@@ -76,9 +76,9 @@ class LetterSerializer(serializers.HyperlinkedModelSerializer):
     def create(self, validated_data):
         # import pdb
         # pdb.set_trace()
-        user = self.context['request'].user
+        penpal = self.context['request'].penpal
         letter = Letter.objects.create(
-            user=user, **validated_data)
+            penpal=penpal, **validated_data)
         return letter
 
 
