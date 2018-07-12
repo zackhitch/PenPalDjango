@@ -47,9 +47,9 @@ class PenPalSerializer(serializers.ModelSerializer):
         # pdb.set_trace()
         address_data = validated_data.pop('address')
         user = self.context['request'].user
-        penpal = PenPal.objects.create(
-            user=user, **validated_data)
-        Address.objects.create(user=user, penpal=penpal, **address_data)
+        address= Address.objects.create( **address_data)
+        penpal = PenPal.objects.create(address=address,
+            user=user, address=**validated_data)
         return penpal
 
 
